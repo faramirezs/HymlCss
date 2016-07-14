@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Image Gallery</title>
+
+		<link rel="stylesheet" 
+		type="text/css" 
+		href="bootstrap.css"
+		/>
+
+		<link rel="stylesheet" 
+		type="text/css" 
+		href="styles.css"
+		/>
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	</head>
+	<body>
+		<a 
+			href="imagegallery.html">
+			Home
+		</a>
+		&nbsp;
+		<a 
+			href="Contactmeimagegallery.html">
+			About us
+		</a>
+		&nbsp;
+		<a 
+			href="Aboutimagegallery.html" class="greenlink">
+			Contact us
+		</a>
+		<hr></hr>
+
+	<div class="container">
+		<h1>The Dog Gallery</h1>
+
+
+		<div class="row">
+			<div class="col-md-3">
+				<img id="img1" class= "crop-img"
+					width="180px" 
+					src="dog1.jpg"; 
+					alt="dog1"/>
+
+			</div>
+
+			<div class="col-md-3">
+				<img id="img2" class= "crop-img"
+					width="180px" 
+					src="dog2.jpg"; 
+					alt="dog2"/>
+			</div>
+
+			<div class="col-md-3">
+				<img id="img3" class= "crop-img"
+					width="180px" 
+					src="dog3.jpg"; 
+					alt="dog3"/>
+			</div>
+		</div>
+
+			<div class="row">
+				<div class="col-md-1">
+				<button id="atras">&lt;</button>
+				</div>
+				<div class="col-md-12">
+					<img id="bigImage" 
+						class= "large-img"
+						src="dog5.jpg"; 
+						alt="dog5"/>
+				</div>
+				<div class="col-md-1">
+					<button id="adelante">&gt;</button>
+				</div>
+			</div>
+		</div>
+
+		<script> 
+
+		var paused = false
+
+			$(".crop-img").click(function(){
+				$("#bigImage").attr('src',
+					$(this).attr('src'));
+			});
+
+		var counter = 1;
+		$("#img"+counter).click()
+		
+		$("#atras").click(function(){
+			counter = counter - 1;
+			if (counter < 1){
+				counter = 3;
+			}
+			$("#img"+counter).click()	
+		});
+
+		$("#adelante").click(function(){
+			counter = counter + 1;
+			if (counter < 3){
+				counter = 1;
+			}
+			$("#img"+counter).click();
+		});		
+
+		$("#bigImage").click(function(){
+			paused = !paused;
+		});
+		
+		setInterval(function(){
+			if (!paused){
+				$("#adelante").click();
+			};
+		}, 3000);
+	</script>
+
+	</body>
+</html>
